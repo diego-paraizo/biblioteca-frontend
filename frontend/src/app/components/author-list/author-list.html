@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="header-info">
+    <h2 class="fw-bold m-0" style="color: #1A202C;">Autores</h2>
+    <p class="text-muted small m-0">Gerencie os escritores cadastrados no sistema.</p>
+  </div>
+  <button class="btn-purple shadow-sm" routerLink="/author-form">
+    <i class="bi bi-person-plus-fill me-2"></i>Novo Autor
+  </button>
+</div>
+
+<div class="table-responsive-clean overflow-hidden">
+  <table class="table table-hover mb-0">
+    <thead>
+      <tr>
+        <th class="ps-4 col-id">ID</th>
+        <th>NOME DO AUTOR</th>
+        <th class="col-actions">AÇÕES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of authors()">
+        <td class="ps-4 align-middle text-muted small">#{{ a.id }}</td>
+        <td class="align-middle">
+          <div class="d-flex align-items-center">
+            <div class="avatar-circle me-3" style="background-color: #F3E5F5; color: var(--primary-purple);">
+              {{ a.name.substring(0, 1).toUpperCase() }}
+            </div>
+            <span class="fw-bold text-dark">{{ a.name }}</span>
+          </div>
+        </td>
+        <td class="align-middle">
+          <div class="d-flex justify-content-center gap-2">
+            <button [routerLink]="['/author-form', a.id]" 
+                    class="btn btn-light btn-sm text-primary border shadow-sm rounded-3">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button (click)="deleteAuthor(a.id)" 
+                    class="btn btn-light btn-sm text-danger border shadow-sm rounded-3">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+
+      <tr *ngIf="authors().length === 0">
+        <td colspan="3" class="p-5 text-center text-muted">
+          <div class="opacity-50">
+            <i class="bi bi-people fs-1 d-block mb-2"></i>
+            <span>Nenhum autor encontrado no servidor.</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

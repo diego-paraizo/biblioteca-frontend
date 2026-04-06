@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="header-info">
+    <h2 class="fw-bold m-0" style="color: #1A202C;">Assuntos</h2>
+    <p class="text-muted small m-0">Gerencie as categorias e temas do seu acervo.</p>
+  </div>
+  <button class="btn-purple shadow-sm" routerLink="/subject-form">
+    <i class="bi bi-tag-fill me-2"></i>Novo Assunto
+  </button>
+</div>
+
+<div class="table-responsive-clean overflow-hidden">
+  <table class="table table-hover mb-0">
+    <thead>
+      <tr>
+        <th class="ps-4 col-id">ID</th>
+        <th>DESCRIÇÃO DO TEMA</th>
+        <th class="col-actions">AÇÕES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of subjects()">
+        <td class="ps-4 align-middle text-muted small">#{{ s.id }}</td>
+        <td class="align-middle">
+          <div class="d-flex align-items-center">
+            <div class="avatar-circle me-3" style="background-color: #EDE7F6; color: var(--primary-purple);">
+              <i class="bi bi-hash"></i>
+            </div>
+            <span class="fw-bold text-dark">{{ s.description }}</span>
+          </div>
+        </td>
+        <td class="align-middle">
+          <div class="d-flex justify-content-center gap-2">
+            <button [routerLink]="['/subject-form', s.id]" 
+                    class="btn btn-light btn-sm text-primary border shadow-sm rounded-3">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button (click)="deleteSubject(s.id)" 
+                    class="btn btn-light btn-sm text-danger border shadow-sm rounded-3">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+
+      <tr *ngIf="subjects().length === 0">
+        <td colspan="3" class="p-5 text-center text-muted">
+          <div class="opacity-50">
+            <i class="bi bi-tags fs-1 d-block mb-2"></i>
+            <span>Nenhum assunto cadastrado no sistema.</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

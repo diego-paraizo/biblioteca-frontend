@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div class="header-info">
+    <h2 class="fw-bold m-0">Acervo Literário</h2>
+    <p class="text-muted small m-0">Controle total de títulos, editoras e preços.</p>
+  </div>
+  <button class="btn-purple shadow-sm" routerLink="/book-form">
+    <i class="bi bi-book-fill me-2"></i>Adicionar Livro
+  </button>
+</div>
+
+<div class="table-responsive-clean overflow-hidden">
+  <table class="table table-hover mb-0">
+    <thead>
+      <tr>
+        <th class="ps-4">TÍTULO E AUTOR</th>
+        <th>ASSUNTOS</th> <th>EDITORA</th>
+        <th>ANO</th>
+        <th>PREÇO</th>
+        <th class="text-center">AÇÕES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of books()">
+        <td class="ps-4 align-middle">
+          <div class="fw-bold text-dark mb-0">{{ b.title }}</div>
+          <div class="text-muted small">
+            <i class="bi bi-person me-1"></i>{{ getAuthorsNames(b.authors) }}
+          </div>
+        </td>
+        
+        <td class="align-middle">
+          <div class="d-flex flex-wrap gap-1">
+            <span class="text-muted small">
+              <i class="bi bi-tag me-1"></i>{{ getSubjectsNames(b.subjects) }}
+            </span>
+          </div>
+        </td>
+
+        <td class="align-middle text-secondary">{{ b.publisher }}</td>
+        
+        <td class="align-middle">
+          <span class="badge-soft">{{ b.yearPublication }}</span>
+        </td>
+        
+        <td class="align-middle fw-bold" style="color: var(--primary-purple)">
+          {{ b.price | currency:'BRL' }}
+        </td>
+
+        <td class="text-center align-middle">
+          <div class="d-flex justify-content-center gap-2">
+            <button [routerLink]="['/book-form', b.id]" class="btn btn-light btn-sm text-primary border shadow-sm rounded-3">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button (click)="deleteBook(b.id)" class="btn btn-light btn-sm text-danger border shadow-sm rounded-3">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

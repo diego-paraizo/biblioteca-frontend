@@ -1,0 +1,108 @@
+:root {
+  --primary-purple: #4A148C;
+  --bg-main: #F0F2F5;       /* O "Meio Termo": nem branco puro, nem escuro */
+  --sidebar-white: #FFFFFF;
+  --text-dark: #2D3748;
+  --text-muted: #718096;
+  --border-color: #E2E8F0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+/* Botão padrão - Matamos o azul aqui */
+.btn-purple {
+  background-color: var(--primary-purple);
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-purple:hover {
+  background-color: #380d6b;
+  box-shadow: 0 4px 12px rgba(74, 20, 140, 0.2);
+}
+
+.custom-input {
+  background-color: #F8F9FA !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 12px 15px !important;
+  color: var(--text-dark) !important;
+}
+
+.custom-input:focus {
+  background-color: #FFFFFF !important;
+  border-color: var(--primary-purple) !important;
+  box-shadow: 0 0 0 3px rgba(74, 20, 140, 0.1) !important;
+}
+
+/* Refinamento das Tabelas */
+.table-responsive-clean {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+  background-color: #fcfcfd;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.table tbody td {
+  padding: 1.1rem 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+/* Avatar de Autor (Iniciais) */
+.avatar-circle {
+  width: 38px;
+  height: 38px;
+  background-color: #F3E5F5;
+  color: var(--primary-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* Badge de Ano/Assunto */
+.badge-soft {
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.col-id { 
+  width: 120px; 
+}
+
+.col-actions { 
+  width: 180px; 
+  text-align: center; 
+}
+
+.table-responsive-clean {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #E2E8F0;
+}

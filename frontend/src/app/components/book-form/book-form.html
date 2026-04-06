@@ -1,0 +1,125 @@
+<div class="d-flex align-items-center mb-4">
+  <button routerLink="/book-list" class="btn btn-light rounded-circle me-3 border shadow-sm">
+    <i class="bi bi-arrow-left"></i>
+  </button>
+  <h3 class="fw-bold m-0">{{ isEditing() ? 'Editar Livro' : 'Novo Livro' }}</h3>
+</div>
+
+<div class="card border-0 shadow-sm p-4" style="border-radius: 20px; background: white;">
+  <form (ngSubmit)="salvar()" #bookForm="ngForm">
+    <div class="row g-4">
+      
+      <div class="col-md-12">
+        <label class="form-label text-muted small fw-bold text-uppercase">Título do Livro</label>
+        <input 
+          type="text" 
+          name="title"
+          [ngModel]="book().title"
+          (ngModelChange)="updateBook('title', $event)"
+          class="form-control custom-input"
+          placeholder="Ex: 1984" 
+          maxlength="40" 
+          required>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label text-muted small fw-bold text-uppercase">Autor(es)</label>
+        <select 
+          name="authors" 
+          multiple 
+          [compareWith]="compareObjects"
+          [ngModel]="book().authors"
+          (ngModelChange)="updateBook('authors', $event)"
+          class="form-select custom-input">
+          <option *ngFor="let a of authorsList()" [ngValue]="a">{{ a.name }}</option>
+        </select>
+        <div class="form-text mt-1 small text-muted">Mantenha pressionado Ctrl (ou Cmd) para selecionar vários.</div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label text-muted small fw-bold text-uppercase">Assunto(s)</label>
+        <select 
+          name="subjects"
+          multiple
+          [ngModel]="book().subjects"
+          (ngModelChange)="updateBook('subjects', $event)"
+          [compareWith]="compareObjects"
+          class="form-select custom-input" 
+          style="height: 120px;">
+          <option *ngFor="let subject of subjectsList()" [ngValue]="subject">
+            {{ subject.description }}
+          </option>
+        </select>
+        <div class="form-text mt-1 small text-muted">Mantenha pressionado Ctrl (ou Cmd) para selecionar vários.</div>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label text-muted small fw-bold text-uppercase">Editora</label>
+        <input 
+          type="text" 
+          name="publisher"
+          [ngModel]="book().publisher"
+          (ngModelChange)="updateBook('publisher', $event)"
+          class="form-control custom-input" 
+          maxlength="40" 
+          required>
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label text-muted small fw-bold text-uppercase">Edição</label>
+        <input 
+          type="number" 
+          name="edition"
+          [ngModel]="book().edition"
+          (ngModelChange)="updateBook('edition', $event)"
+          class="form-control custom-input" 
+          required>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label text-muted small fw-bold text-uppercase">Ano de Publicação</label>
+        <input 
+          type="text" 
+          name="yearPublication"
+          [ngModel]="book().yearPublication"
+          (ngModelChange)="updateBook('yearPublication', $event)"
+          class="form-control custom-input" 
+          placeholder="AAAA"
+          maxlength="4" 
+          pattern="\d{4}"
+          required>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label text-muted small fw-bold text-uppercase">Preço (R$)</label>
+        <div class="input-group">
+          <span class="input-group-text bg-light">R$</span>
+          
+          <input 
+            type="number" 
+            name="price"
+            step="0.01"
+            min="0" 
+            max="999999.99"
+            [ngModel]="book().price"
+            (ngModelChange)="updateBook('price', $event)"
+            class="form-control custom-input" 
+            placeholder="0.00"
+            required
+            onkeydown="return event.key !== 'e' && event.key !== 'E' && event.key !== '+' && event.key !== '-'"
+            oninput="if(this.value.length > 9) this.value = this.value.slice(0, 9); if(this.value > 999999.99) this.value = 999999.99;">
+        </div>
+        <div class="form-text small text-muted">Use ponto para decimais (ex: 55.90)</div>
+      </div>
+
+      <div class="col-12 mt-5 d-flex gap-3">
+        <button type="submit" class="btn-purple px-5 shadow-sm">
+          <i class="bi bi-check2-circle me-2"></i>Salvar Registro
+        </button>
+        <button type="button" routerLink="/book-list" class="btn btn-light px-4 border" style="border-radius: 10px;">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

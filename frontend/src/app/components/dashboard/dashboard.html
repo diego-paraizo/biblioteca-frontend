@@ -1,0 +1,57 @@
+<div class="dashboard-wrapper p-4">
+  <div class="header-section mb-5">
+    <h1 class="fw-bold text-dark">Painel de Controle</h1>
+    <p class="text-muted">Bem-vindo de volta! Aqui está o resumo do seu acervo hoje.</p>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="stat-card glass-card">
+        <div class="icon-box bg-purple-light">
+          <i class="bi bi-book-half"></i>
+        </div>
+        <div class="stat-info">
+          <span class="label">Total de Livros</span>
+          <h2 class="counter">{{ stats().totalBooks }}</h2>
+        </div>
+        <div class="card-progress bg-purple"></div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="stat-card glass-card">
+        <div class="icon-box bg-blue-light">
+          <i class="bi bi-people-fill"></i>
+        </div>
+        <div class="stat-info">
+          <span class="label">Autores Cadastrados</span>
+          <h2 class="counter">{{ stats().totalAuthors }}</h2>
+        </div>
+        <div class="card-progress bg-blue"></div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="stat-card glass-card">
+        <div class="icon-box bg-orange-light">
+          <i class="bi bi-tags-fill"></i>
+        </div>
+        <div class="stat-info">
+          <span class="label">Assuntos Mapeados</span>
+          <h2 class="counter">{{ stats().totalSubjects }}</h2>
+        </div>
+        <div class="card-progress bg-orange"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-banner shadow-lg">
+    <div class="banner-content">
+      <h3 class="fw-bold mb-2">Gestão Bibliográfica Completa</h3>
+      <p class="mb-0 opacity-75">Utilize o menu lateral para gerenciar novos registros ou gerar relatórios em PDF.</p>
+    </div>
+    <div class="banner-image">
+       <i class="bi bi-rocket-takeoff"></i>
+    </div>
+  </div>
+</div>

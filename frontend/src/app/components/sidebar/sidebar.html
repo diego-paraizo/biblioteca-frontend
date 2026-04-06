@@ -1,0 +1,32 @@
+<div class="sidebar-container">
+  <div class="brand mb-5">
+    <i class="bi bi-bookmark-star-fill"></i>
+    <span>BiblioManager</span>
+  </div>
+
+  <nav class="nav flex-column gap-2">
+    <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-grid-1x2-fill"></i> Dashboard
+    </a>
+
+    <div class="menu-label mt-4">CADASTROS</div>
+    <a routerLink="/book-list" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-book-fill"></i> Livros
+    </a>
+    <a routerLink="/author-list" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-person-badge-fill"></i> Autores
+    </a>
+    <a routerLink="/subject-list" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-tags-fill"></i> Assuntos
+    </a>
+
+    <div class="menu-label mt-4">RELATÓRIOS</div>
+    <a routerLink="/book-report" routerLinkActive="active" class="nav-link">
+      <i class="bi bi-eye-fill"></i> Visualizar Relatório
+    </a>
+    
+    <a class="nav-link cursor-pointer" (click)="exportarPdf()">
+      <i class="bi bi-file-earmark-pdf-fill"></i> Exportar PDF
+    </a>
+  </nav>
+</div>

@@ -1,0 +1,37 @@
+<div class="d-flex align-items-center mb-4">
+  <button routerLink="/subject-list" class="btn btn-light rounded-circle me-3 border shadow-sm">
+    <i class="bi bi-arrow-left"></i>
+  </button>
+  <h3 class="fw-bold m-0">
+    {{ isEditing() ? 'Editar Assunto' : 'Novo Assunto' }}
+  </h3>
+</div>
+
+<div class="card border-0 shadow-sm p-4" style="border-radius: 20px; background: white; max-width: 800px;">
+  <form (ngSubmit)="salvar()" #subjectForm="ngForm">
+    <div class="row g-4">
+
+      <div [class]="isEditing() ? 'col-md-10' : 'col-md-12'">
+        <label class="form-label text-muted small fw-bold text-uppercase">Descrição do Tema</label>
+        <input 
+          type="text" 
+          name="description"
+          [ngModel]="subject().description" 
+          (ngModelChange)="subject.set({ ...subject(), description: $event })"
+          class="form-control custom-input" 
+          placeholder="Ex: Ficção Científica"
+          maxlength="20"
+          required>
+      </div>
+
+      <div class="col-12 mt-5 d-flex gap-3">
+        <button type="submit" class="btn-purple px-5 shadow-sm">
+          <i class="bi bi-check2-circle me-2"></i>Salvar Registro
+        </button>
+        <button type="button" routerLink="/subject-list" class="btn btn-light px-4 border" style="border-radius: 10px;">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
